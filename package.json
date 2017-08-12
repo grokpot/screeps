@@ -1,0 +1,25 @@
+{
+  "name": "screeps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "grunt-screeps": "^1.3.0"
+  },
+  "devDependencies": {
+    "grun": "^0.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanprater/screeps.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryanprater/screeps/issues"
+  },
+  "homepage": "https://github.com/ryanprater/screeps#readme"
+}
