@@ -1,4 +1,4 @@
-laimer = {
+var roleClaimer = {
 
     /** @param {Creep} creep **/
     run: function(creep) {

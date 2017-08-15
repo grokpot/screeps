@@ -1,4 +1,4 @@
-SONS LEARNED
+/*LESSONS LEARNED
  * - first spawn should be in between energy source and room controller
  * - space between spawn and other structures should be min 2 spaces (eases moving)
  **/

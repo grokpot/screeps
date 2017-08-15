@@ -1,5 +1,4 @@
-
-ver = {
+var roleMover = {
 
     /** @param {Creep} creep **/
     run: function(creep) {

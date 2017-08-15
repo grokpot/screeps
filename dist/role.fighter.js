@@ -1,4 +1,4 @@
-ter = {
+var roleFighter = {
 
     /** @param {Creep} creep **/
     run: function(creep) {

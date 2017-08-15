@@ -1,4 +1,4 @@
-rvester = require('role.harvester');
+var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
@@ -43,7 +43,7 @@ module.exports.loop = function () {
     // TODO: check out StructureSpawn.renewCreep as an alternative to the below
     if (harvesters.length < 4) {
         var newName = Game.spawns['Spawn1'].createCreep(
-            [WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], 
+            [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
             "harvester" + Game.time.toString(), 
             {role: 'harvester'});
         console.log('Spawning new harvester: ' + newName);

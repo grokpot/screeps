@@ -1,5 +1,9 @@
+var roleUpgrader = {
 
-f (creep.carry.energy == 0) {
+    /** @param {Creep} creep **/
+    run: function(creep) {
+
+        if (creep.carry.energy == 0) {
             creep.memory.get_energy = true;
         } else if (creep.carry.energy == creep.carryCapacity) {
             creep.memory.get_energy = false;

@@ -1,4 +1,4 @@
- = require('utils');
+var utils = require('utils');
 
 var roleHarvester = {
 

@@ -1,12 +1,3 @@
-
-dule code goes here. Use 'module.exports' to export things:
- * module.exports.thing = 'a thing';
- *
- * You can import it from another modules like this:
- * var mod = require('role.builder');
- * mod.thing == 'a thing'; // true
- */
-
 var roleBuilder = {
 
     /** @param {Creep} creep **/
@@ -34,9 +25,8 @@ var roleBuilder = {
                 }
             }
 	    } else {
-	       var target = Game.getObjectById('598e342641d70d5a4845dfab');
-	       console.log(target)
-	       // var target = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES); 
+	       // var target = Game.getObjectById('598e342641d70d5a4845dfab');
+	       var target = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
 	            // Uncomment to build specific things
 	           // {filter: (structure) => {return (structure.structureType == STRUCTURE_EXTENSION)}});
 	        
