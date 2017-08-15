@@ -41,56 +41,40 @@ module.exports.loop = function () {
     
     // TODO: Use numbers to build part arrays
     // TODO: check out StructureSpawn.renewCreep as an alternative to the below
-    if (harvesters.length < 4) {
-        var newName = Game.spawns['Spawn1'].createCreep(
-            [WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
-            "harvester" + Game.time.toString(), 
-            {role: 'harvester'});
-        console.log('Spawning new harvester: ' + newName);
-    } else if (builders.length < 2) {
-        var newName = Game.spawns['Spawn1'].createCreep(
-            [WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], 
-            "builder" + Game.time.toString(), 
-            {role: 'builder'});
-        console.log('Spawning new builder: ' + newName);
+    var role, parts_arr;
+    if (harvesters.length < 3) {
+        role = 'harvester';
+        parts_arr = [WORK,WORK,WORK,WORK,WORK, CARRY,CARRY,CARRY,CARRY, MOVE,MOVE,MOVE,MOVE];
+    } else if (builders.length < 1) {
+        role = 'builder';
+        parts_arr = [WORK,WORK,WORK,WORK,WORK,WORK, CARRY,CARRY,CARRY,CARRY, MOVE,MOVE,MOVE,MOVE];
     } else if (upgraders.length < 2){
-        var newName = Game.spawns['Spawn1'].createCreep(
-            [WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE], 
-            "upgrader" + Game.time.toString(), 
-            {role: 'upgrader'});
-        console.log('Spawning new upgrader: ' + newName);
+        role = 'upgrader';
+        parts_arr = [WORK,WORK,WORK,WORK,WORK,WORK, CARRY,CARRY,CARRY,CARRY, MOVE,MOVE,MOVE,MOVE];
     } else if (repairers.length < 1){
-        var newName = Game.spawns['Spawn1'].createCreep(
-            [WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],
-            "repairer" + Game.time.toString(), 
-            {role: 'repairer'});
-        console.log('Spawning new repairer: ' + newName);
+        role = 'repairer';
+        parts_arr = [WORK,WORK,WORK,WORK,WORK,WORK, CARRY,CARRY,CARRY,CARRY, MOVE,MOVE,MOVE,MOVE];
     } else if (movers.length < 2){
-        var newName = Game.spawns['Spawn1'].createCreep(
-            [CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE], 
-            "mover" + Game.time.toString(), 
-            {role: 'mover'});
-        console.log('Spawning new mover: ' + newName);
+        role = 'mover';
+        parts_arr = [CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY, MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE];
     } else if (fighters.length < 2){
-        var newName = Game.spawns['Spawn1'].createCreep(
-            [ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,HEAL], 
-            "fighter" + Game.time.toString(), 
-            {role: 'fighter'});
-        console.log('Spawning new fighter: ' + newName);
+        role = 'fighter';
+        parts_arr = [ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK, MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE, HEAL];
     }
     else if (claimers.length < 1){
-        var newName = Game.spawns['Spawn1'].createCreep(
-            [CLAIM,CLAIM,MOVE,MOVE], 
-            "claimer" + Game.time.toString(), 
-            {role: 'claimer'});
-        console.log('Spawning new claimer: ' + newName);
+        role = 'claimer';
+        parts_arr = [CLAIM,CLAIM,MOVE,MOVE];
     }
+
+    // Spawn Creep
+    var spawnedName = Game.spawns['Spawn1'].createCreep(parts_arr, role + Game.time.toString(), {role: role});
+    console.log('Spawning new ' + role + ': ' + spawnedName);
     
-    // Spawniong options
+    // Spawning options
     if(Game.spawns['Spawn1'].spawning) { 
         var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
         Game.spawns['Spawn1'].room.visual.text(
-            '🛠️' + spawningCreep.memory.role,
+            spawningCreep.memory.role,
             Game.spawns['Spawn1'].pos.x + 1, 
             Game.spawns['Spawn1'].pos.y, 
             {align: 'left', opacity: 0.8});
